@@ -1,20 +1,18 @@
-
+#!/usr/bin/env python3
 import ctypes
 
-# ---------------------- #
 # Load `sqrt' from dynlib. 
-
 dyn = ctypes.CDLL('./dynlib.so')
-sqrt = dyn.sqrt
+sqrt = dyn.m_sqrt
 
 sqrt.argtypes = [ctypes.c_double] # default: None
 sqrt.restype  =  ctypes.c_double  # default: c_int
 
-print( "sqrt(5) = %f." % sqrt(5), '\n' )
+print( "sqrt(5) = %f. \n" % sqrt(5))
 
-# ---------------------- #
+
+
 # Using Struct.
-
 class Point(ctypes.Structure):
     _fields_ = [("x", ctypes.c_float), ("y", ctypes.c_float)]
 
